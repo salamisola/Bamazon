@@ -7,9 +7,10 @@ product_name VARCHAR(100) NOT NULL,
 department_name VARCHAR(100) NOT NULL,
 price INTEGER(10) NOT NULL,
 stock_quantity INTEGER(30) NOT NULL,
-PRIMARY KEY (id)
+PRIMARY KEY (item_id)
 );
 
+SELECT * FROM products;
 
 
 
