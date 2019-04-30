@@ -30,7 +30,7 @@ function loadProducts() {
         console.table(res);
         start();
     })
-}
+};
 
 // function which prompts the user for what action they should take
 function start(inventory) {
@@ -44,7 +44,7 @@ function start(inventory) {
         ])
         .then(function (val) {
             var userChoice = parseInt(val.choice);
-            var product = checkUserChoice(userChoice, inventory);
+            var product = checkUserChoice(userChoice, stock_quanity);
             if (product) {
                 howMany(product);
             } else {
@@ -90,8 +90,10 @@ function start(inventory) {
     }
 
     // check to see if the product the user selected exists in the inventory
-    function checkInventory(choiceID, inventory) {
+    /* function checkInventory(choiceID, inventory) {
 
-    }
+    }; */
+};
+
 
 
