@@ -101,16 +101,21 @@ function buyItems(product, quantity) {
     console.log(new_stock_quantity);
     console.log(product.item_id);
     connection.query(
-        "UPDATE products SET stock_quantity =" + new_stock_quantity + "where item_id = " + product.item_id + ";",
-        function (err, res) {
-            console.log(
-                "\n Congratulations you've purchased " + quantity +
-                " " + product.product_name + "'s!"
-
-            );
+        "UPDATE products SET ? WHERE ?",
+        [
+            {
+                stock_quantity: new_stock_quantity
+            },
+            {
+                item_id: product.item_id
+            }
+        ],
+        function (error) {
+            if (error) throw err;
+            console.log("updated inventory");
             loadProducts();
         }
-    )
+    );
 }
 
     // check to see if the product the user selected exists in the inventory
