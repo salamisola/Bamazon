@@ -83,7 +83,7 @@ function howMany(product) {
         .then(function (val) {
             console.log(val.quantity);
             console.log(product[0].stock_quantity);
-            /* var quantity = parseInt(val.quantity); */
+            /*var quantity = parseInt(val.quantity);*/
             if (val.quantity > product[0].stock_quanity) {
                 console.log("\n Not enough of the product! Sorry");
                 loadProducts();
@@ -93,24 +93,31 @@ function howMany(product) {
 
             }
         })
-}
+    /* connection.query("UPDATE products SET stock_quantity = " + s_temp + " WHERE item_id = " + s_g_id,
+        function (err, res) { });
 
-function buyItems(product, quantity) {
-    var new_stock_quantity = product.stock_quantity - quantity;
-    console.log(new_stock_quantity);
-    console.log(product.item_id);
+} */
+
+    /* var query = 'UPDATE products SET stockquantity = ? WHERE itemid = ?';
     connection.query(
-        "UPDATE products SET stock_quantity =" + new_stock_quantity + "where item_id = " + product.item_id + ";",
-        function (err, res) {
-            console.log(
-                "\n Congratulations you've purchased " + quantity +
-                " " + product.product_name + "'s!"
+        'UPDATE products SET stock_quantity = ? WHERE item_id = ?', [stock_quantity, item_id], function (error, result) */
 
-            );
-            loadProducts();
-        }
-    )
-}
+    function buyItems(product, quantity) {
+        var new_stock_quantity = product.stock_quantity - quantity;
+        /* console.log(new_stock_quantitytes);
+        console.log(product.item_id); */
+        connection.query(
+            "UPDATE products SET stock_quantity =" + new_stock_quantity + "WHERE item_id = " + product[0].item_id + ";",
+            function (err, res) {
+                console.log(
+                    "\n Congratulations you've purchased " + quantity +
+                    " " + product.product_name + "'s!"
+
+                );
+                loadProducts();
+            }
+        )
+    }
 
     // check to see if the product the user selected exists in the inventory
 /* function checkInventory(pruduct_name, stock_quantity) {

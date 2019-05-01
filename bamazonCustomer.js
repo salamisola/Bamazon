@@ -83,8 +83,9 @@ function howMany(product) {
         .then(function (val) {
             console.log(val.quantity);
             console.log(product[0].stock_quantity);
-            /* var quantity = parseInt(val.quantity); */
-            if (val.quantity > product[0].stock_quanity) {
+            var quantity = parseInt(val.quantity);
+            var stock_quantity = parseInt(product[0].stock_quantity);
+            if (quantity > stock_quantity) {
                 console.log("\n Not enough of the product! Sorry");
                 loadProducts();
             } else {
@@ -96,7 +97,7 @@ function howMany(product) {
 }
 
 function buyItems(product, quantity) {
-    var new_stock_quantity = product.stock_quantity - quantity;
+    var new_stock_quantity = parseInt(product.stock_quantity) - parseInt(quantity);
     console.log(new_stock_quantity);
     console.log(product.item_id);
     connection.query(
